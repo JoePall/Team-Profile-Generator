@@ -1,21 +1,37 @@
 const inquirer = require("inquirer");
 
 async function getPersonInfo() {
-    let person = [];
+    let person = {};
 
-    await person.push(await input("name", "Name: "));
-    await person.push(await input("position", "Position: ", [
+    person.name = await input("Name: ");
+    console.log(person);
+    person.position = await input("Position: ", [
         "Manager",
-        "Developer",
+        "Engineer",
         "Intern",
-    ]));
-    await person.push(await input("other", "Other: "));
+    ]);
+    console.log(person);
+
+    switch (person.position) {
+        case "Manager":
+            person.officeNumber = await input("Office Number: ");
+            break;
+        case "Intern":
+            person.school = await input("School: ");
+            break;
+        case "Engineer":
+            person.github = await input("GitHub UserName: ");
+            break;
+        default:
+            break;
+    }
+    person.email = await input("Email: ");
 
     return person;
 }
 
 async function getPeople(isRecursive = false, people = []) {
-    await people.push(await getPersonInfo());
+    people.push(await getPersonInfo());
 
     var response = await inquirer.prompt([
         {
@@ -23,28 +39,43 @@ async function getPeople(isRecursive = false, people = []) {
             "message": "Would you like to add another person?",
             "type": "confirm"
         }]);
-    console.log(people);
-    if (response.confirm) getPeople(true, people);
-    else return people;
-};
 
-async function input(name, message, choices = undefined) {
-    if (choices) {
-        return await inquirer.prompt([
-            {
-                "name": name,
-                "message": message,
-                "choices": choices
-            }]);
+    if (response.confirm) {
+        console.log("\n------------------\n");
+        return await getPeople(true, people);
     }
     else {
-        return await inquirer.prompt([
+        return people;
+    }
+};
+
+async function input(message, choices = null) {
+    if (choices != null) {
+        var response = await inquirer.prompt([
             {
-                "name": name,
+                "name": "value",
+                "message": message,
+                "type": "list",
+                "choices": choices
+            }]);
+        console.log(response);
+    }
+    else {
+        var response = await inquirer.prompt([
+            {
+                "name": "value",
                 "message": message,
                 "type": "input"
             }]);
     }
+    console.log(response.value);
+    return response.value;
 }
 
-getPeople(true);
+async function init() {
+    let people = await getPeople(true);
+
+    console.log(people);
+}
+
+init();
