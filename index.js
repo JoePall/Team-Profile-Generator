@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
-const render = require("./lib/htmlRenderer");
+const { resolve } = require("path");
 const fs = require("fs");
+
+const render = require("./lib/htmlRenderer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -74,13 +76,13 @@ async function input(message, choices = null) {
 
 async function init() {
     let people = await getPeople(true);
-    
+
     let fileName = await input("File name: ");
     let html = render(people);
 
-    fs.writeFile(fileName, html, "utf8", () => {
-        console.log("File written!");
-    });
+
+    const outputDir = resolve(__dirname, "./output");
+    fs.writeFile(resolve(outputDir, fileName), html, "utf8", () => console.log("File written!"));
 }
 
 init();
