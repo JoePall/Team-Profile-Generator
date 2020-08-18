@@ -1,52 +1,53 @@
 const inquirer = require("inquirer");
+const render = require("./lib/htmlRenderer");
+const fs = require("fs");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 async function getPersonInfo() {
-    let person = {};
-
-    person.name = await input("Name: ");
-    console.log(person);
-    person.position = await input("Position: ", [
+    let name = await input("Name: ");
+    let email = await input("Email: ");
+    let position = await input("Position: ", [
         "Manager",
         "Engineer",
         "Intern",
     ]);
-    console.log(person);
 
-    switch (person.position) {
+    let id = createID();
+
+    switch (position) {
         case "Manager":
-            person.officeNumber = await input("Office Number: ");
-            break;
+            let officeNumber = await input("Office Number: ");
+            return new Manager(name, id, email, officeNumber);
         case "Intern":
-            person.school = await input("School: ");
-            break;
+            let school = await input("School: ");
+            return new Intern(name, id, email, school);
         case "Engineer":
-            person.github = await input("GitHub UserName: ");
-            break;
+            let github = await input("GitHub UserName: ");
+            return new Engineer(name, id, email, github);
         default:
             break;
     }
-    person.email = await input("Email: ");
+}
 
-    return person;
+function createID() {
+    let result = "";
+
+    for (let i = 0; i < 128; i++)
+        result += (Math.floor(Math.random() * 11) * Date.now()).toString()[0];
+
+    return result;
 }
 
 async function getPeople(isRecursive = false, people = []) {
     people.push(await getPersonInfo());
 
-    var response = await inquirer.prompt([
-        {
-            "name": "confirm",
-            "message": "Would you like to add another person?",
-            "type": "confirm"
-        }]);
+    var response = await input("Would you like to add another person (Y / N)?");
 
-    if (response.confirm) {
-        console.log("\n------------------\n");
-        return await getPeople(true, people);
-    }
-    else {
-        return people;
-    }
+    console.log("\n------------------\n");
+
+    return (response.toUpperCase() === "Y") ? await getPeople(true, people) : people;
 };
 
 async function input(message, choices = null) {
@@ -58,7 +59,6 @@ async function input(message, choices = null) {
                 "type": "list",
                 "choices": choices
             }]);
-        console.log(response);
     }
     else {
         var response = await inquirer.prompt([
@@ -68,14 +68,19 @@ async function input(message, choices = null) {
                 "type": "input"
             }]);
     }
-    console.log(response.value);
+
     return response.value;
 }
 
 async function init() {
     let people = await getPeople(true);
+    
+    let fileName = await input("File name: ");
+    let html = render(people);
 
-    console.log(people);
+    fs.writeFile(fileName, html, "utf8", () => {
+        console.log("File written!");
+    });
 }
 
 init();

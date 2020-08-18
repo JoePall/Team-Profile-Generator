@@ -1,0 +1,23 @@
+* {
+    text-shadow: 0 0 2em #99999999;
+    text-overflow: ellipsis;
+}
+
+.team-heading {
+    background: linear-gradient(#00553333, #00335533);
+    box-shadow: 0 0 5px #00000055;
+}
+
+.team-area, .team-area>div, .team-area>div>div {
+    border-radius: 1em !important;
+}
+
+.employee-card {
+    margin: 1em;
+}
+
+.employee-card>.card-header {
+    background: linear-gradient(#cfe, #cef);
+}
+
+
