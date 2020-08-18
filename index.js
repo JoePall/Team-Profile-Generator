@@ -76,9 +76,20 @@ async function input(message, choices = null) {
 }
 
 async function init() {
-    let people = await getPeople(true);
+    // let people = await getPeople(true);
+    // let fileName = await input("File name: ");
 
-    let fileName = await input("File name: ");
+    let people = [];
+
+    people.push(new Intern("John Casey", createID(), "casey@normlseatech.com", "UCLA"));
+    people.push(new Engineer("Chuck Bartowski", createID(), "chuck@nerdherd.com", "charlesCharmichael"));
+    people.push(new Manager("Sarah Walker", createID(), "sarah@corsimatech.com", 5));
+
+    let fileName = "test.html";
+
+
+
+
     let html = render(people);
 
 

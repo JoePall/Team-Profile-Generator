@@ -1,6 +1,7 @@
 * {
     text-shadow: 0 0 2em #99999999;
     text-overflow: ellipsis;
+    color: #000000cc;
 }
 
 .team-heading {
@@ -20,4 +21,7 @@
     background: linear-gradient(#cfe, #cef);
 }
 
-
+.employee-card>div>ul>li {
+    overflow: hidden;
+    white-space: nowrap;
+}
