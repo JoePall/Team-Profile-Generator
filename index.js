@@ -45,11 +45,12 @@ function createID() {
 async function getPeople(isRecursive = false, people = []) {
     people.push(await getPersonInfo());
 
-    var response = await input("Would you like to add another person (Y / N)?");
+    var response = await input("\nWould you like to add another person (Y / N)?");
 
     console.log("\n------------------\n");
+    console.log(response.toUpperCase());
 
-    return (response.toUpperCase() === "Y") ? await getPeople(true, people) : people;
+    return (response.toUpperCase() === "Y" || response.toUpperCase() === "\r\n" ) ? await getPeople(true, people) : people;
 };
 
 async function input(message, choices = null) {
