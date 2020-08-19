@@ -10,26 +10,87 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+async function getPersonInfo() {
+    let name = await input("Name: ");
+    let email = await input("Email: ");
+    let position = await input("Position: ", [
+        "Manager",
+        "Engineer",
+        "Intern",
+    ]);
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+    let id = createID();
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
+    switch (position) {
+        case "Manager":
+            let officeNumber = await input("Office Number: ");
+            return new Manager(name, id, email, officeNumber);
+        case "Intern":
+            let school = await input("School: ");
+            return new Intern(name, id, email, school);
+        case "Engineer":
+            let github = await input("GitHub UserName: ");
+            return new Engineer(name, id, email, github);
+        default:
+            break;
+    }
+}
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
+function createID() {
+    let result = "";
 
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
+    for (let i = 0; i < 128; i++)
+        result += (Math.floor(Math.random() * 11) * Date.now()).toString()[0];
 
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+    return result;
+}
+
+async function getPeople(isRecursive = false, people = []) {
+    people.push(await getPersonInfo());
+
+    var response = await input("\nWould you like to add another person (Y / N)?");
+
+    console.log("\n------------------\n");
+    console.log(response.toUpperCase());
+
+    return (response.toUpperCase() === "Y" || response.toUpperCase() === "\r\n") ? await getPeople(true, people) : people;
+};
+
+async function input(message, choices = null) {
+    if (choices != null) {
+        var response = await inquirer.prompt([
+            {
+                "name": "value",
+                "message": message,
+                "type": "list",
+                "choices": choices
+            }]);
+    }
+    else {
+        var response = await inquirer.prompt([
+            {
+                "name": "value",
+                "message": message,
+                "type": "input"
+            }]);
+    }
+
+    return response.value;
+}
+
+async function init() {
+    // let people = await getPeople(true);
+    // let fileName = await input("File name: ");
+
+    let people = [];
+
+    people.push(new Intern("John Casey", createID(), "casey@normlseatech.com", "UCLA"));
+    people.push(new Engineer("Chuck Bartowski", createID(), "chuck@nerdherd.com", "charlesCharmichael"));
+    people.push(new Manager("Sarah Walker", createID(), "sarah@corsimatech.com", 5));
+
+    let html = render(people);
+
+    fs.writeFile(outputPath, html, "utf8", () => console.log("File written!"));
+}
+
+init();
