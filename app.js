@@ -53,7 +53,7 @@ async function getPeople(isRecursive = false, people = []) {
     console.log("\n------------------\n");
     console.log(response.toUpperCase());
 
-    return (response.toUpperCase() === "Y" || response.toUpperCase() === "\r\n") ? await getPeople(true, people) : people;
+    return (response.toUpperCase() === "Y" || response.toUpperCase() === "") ? await getPeople(true, people) : people;
 };
 
 async function input(message, choices = null) {
@@ -80,10 +80,11 @@ async function input(message, choices = null) {
 
 async function init() {
     // let people = await getPeople(true);
-    // let fileName = await input("File name: ");
 
     let people = [];
 
+    people.push(new Intern("John Casey", createID(), "casey@normlseatech.com", "UCLA"));
+    people.push(new Engineer("Chuck Bartowski", createID(), "chuck@nerdherd.com", "charlesCharmichael"));
     people.push(new Intern("John Casey", createID(), "casey@normlseatech.com", "UCLA"));
     people.push(new Engineer("Chuck Bartowski", createID(), "chuck@nerdherd.com", "charlesCharmichael"));
     people.push(new Manager("Sarah Walker", createID(), "sarah@corsimatech.com", 5));

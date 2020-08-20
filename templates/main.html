@@ -8,7 +8,47 @@
     <title>My Team</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            text-shadow: 0 0 2em #99999999;
+            text-overflow: ellipsis;
+            color: #000000cc;
+        }
+
+        .team-heading {
+            background: #def;
+            box-shadow: 0 0 5px #00000055;
+        }
+
+        .team-area,
+        .team-area>div,
+        .team-area>div>div {
+            border-radius: 1em !important;
+        }
+
+        .employee-card {
+            background-color: #f9f9f9;
+            margin: 1em;
+        }
+
+        .employee-card>.card-header {
+            background-color: #fed !important;
+            border-radius: 1em 1em 0 0 !important;
+        }
+
+        .employee-card>div>ul>li {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .card {
+            box-shadow: 0 0 3px 3px #00000011;
+        }
+
+        li {
+            background-color: #fff !important;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
 </head>
 
@@ -20,11 +60,9 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
-                {{ team }}
-            </div>
+    <div class="container-fluid">
+        <div class="team-area row d-flex justify-content-center">
+            {{ team }}
         </div>
     </div>
 </body>
