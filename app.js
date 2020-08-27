@@ -79,15 +79,7 @@ async function input(message, choices = null) {
 }
 
 async function init() {
-    // let people = await getPeople(true);
-
-    let people = [];
-
-    people.push(new Intern("John Casey", createID(), "casey@normlseatech.com", "UCLA"));
-    people.push(new Engineer("Chuck Bartowski", createID(), "chuck@nerdherd.com", "charlesCharmichael"));
-    people.push(new Intern("John Casey", createID(), "casey@normlseatech.com", "UCLA"));
-    people.push(new Engineer("Chuck Bartowski", createID(), "chuck@nerdherd.com", "charlesCharmichael"));
-    people.push(new Manager("Sarah Walker", createID(), "sarah@corsimatech.com", 5));
+    let people = await getPeople(true);
 
     let html = render(people);
 
