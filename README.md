@@ -1,10 +1,10 @@
-[![Enhancements](https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/enhancement.svg)](https://github.com/JoePall/Team-Profile-Generator/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement+sort%3Areactions-%2B1-desc)
-[![Bugs](https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/bug.svg)](https://github.com/JoePall/Team-Profile-Generator/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
-![License](https://img.shields.io/badge/License-MIT%20License-green?style=flat-square.svg)
+![https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/enhancement.svg](https://github.com/JoePall/Team-Profile-Generator/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement+sort%3Areactions-%2B1-desc)]
+![https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/bug.svg](https://github.com/JoePall/Team-Profile-Generator/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)]
+![License](https://img.shields.io/badge/License-MIT%20License-green?style=flat-square.svg)]
 
 # Team Profile Generator
 
-<iframe src="https://drive.google.com/file/d/1hJU1CxucoWT_UJTKRlEFWo9BV_zTvXI-/preview" width="640" height="480"></iframe>
+<a href="https://drive.google.com/file/d/1hJU1CxucoWT_UJTKRlEFWo9BV_zTvXI-/preview">https://drive.google.com/file/d/1hJU1CxucoWT_UJTKRlEFWo9BV_zTvXI-/preview</a>
 
 ## Description
 
