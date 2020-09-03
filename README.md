@@ -14,9 +14,10 @@
 <iframe src="https://drive.google.com/file/d/1hJU1CxucoWT_UJTKRlEFWo9BV_zTvXI-/preview" width="640" height="480"></iframe>
 
 ## Instructions
-1. Download and open the project in a terminal
-2. type "node app.js" and hit enter.
-3. Follow the steps.
+1. Download and open the project in VS Code
+2. Open a terminal to the root of the source code.
+3. type "node app.js" and hit enter.
+4. Follow the steps.
 
 ## Questions
 
