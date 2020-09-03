@@ -11,6 +11,8 @@
 
 <p>Need a simple team web page? This project allows you to generate a team portfolio web page from this CLI App.</p>
 
+<iframe src="https://drive.google.com/file/d/1hJU1CxucoWT_UJTKRlEFWo9BV_zTvXI-/preview" width="640" height="480"></iframe>
+
 ## Instructions
 1. Download and open the project in a terminal
 2. type "node app.js" and hit enter.
