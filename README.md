@@ -1,5 +1,5 @@
 [![Enhancements](https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/enhancement.svg)](https://github.com/JoePall/Team-Profile-Generator/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement+sort%3Areactions-%2B1-desc)
-Node CLI app generates a single HTML webpage of employee summaries based on input 	[![Bugs](https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/bug.svg)](https://github.com/JoePall/Team-Profile-Generator/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
+[![Bugs](https://img.shields.io/github/issues/JoePall/Team-Profile-Generator/bug.svg)](https://github.com/JoePall/Team-Profile-Generator/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
 ![License](https://img.shields.io/badge/License-MIT%20License-green?style=flat-square.svg)
 
 # Team Profile Generator
