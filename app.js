@@ -51,7 +51,6 @@ async function getPeople(isRecursive = false, people = []) {
     var response = await input("\nWould you like to add another person (Y / N)?");
 
     console.log("\n------------------\n");
-    console.log(response.toUpperCase());
 
     return (response.toUpperCase() === "Y" || response.toUpperCase() === "") ? await getPeople(true, people) : people;
 };
